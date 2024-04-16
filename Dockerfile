@@ -45,6 +45,11 @@ ENV VENV_PATH=${VENV_PATH}
 WORKDIR /
 COPY --chmod=755 scripts/* ./
 
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+RUN source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
+
+RUN git clone https://github.com/SillyTavern/SillyTavern -b release
+
 # Start the container
 SHELL ["/bin/bash", "--login", "-c"]
 CMD [ "/start.sh" ]

@@ -78,6 +78,19 @@ else
     nohup ./start_textgen_server.sh "${ARGS[@]}" > /workspace/logs/textgen.log 2>&1 &
     echo "Oobabooga Text Generation Web UI started"
     echo "Log file: /workspace/logs/textgen.log"
+
+    echo "Checking if SillyTavern is already installed"
+    if [[ ! -d /workspace/SillyTavern ]];
+    then
+        echo "SillyTavern not found in /workspace. Installing..."
+        cp -r /SillyTavern /workspace
+    fi
+
+    source ~/.nvm/nvm.sh
+    echo "Starting SillyTavern"
+    cd /workspace/SillyTavern
+    nohup ./start.sh > /workspace/logs/st.log 2>&1 &
+    echo "SillyTavern started"
 fi
 
 echo "All services have been started"
