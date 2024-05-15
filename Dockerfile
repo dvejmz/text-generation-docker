@@ -48,7 +48,7 @@ COPY --chmod=755 scripts/* ./
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 RUN source ~/.nvm/nvm.sh && nvm install --lts && nvm use --lts
 
-RUN git clone https://github.com/SillyTavern/SillyTavern -b release
+RUN git clone https://github.com/SillyTavern/SillyTavern -b staging
 
 # Start the container
 SHELL ["/bin/bash", "--login", "-c"]
